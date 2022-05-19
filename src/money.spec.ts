@@ -11,6 +11,8 @@ test('Test Multiplication', () => {
 test('Test Equality', () => {
   expect(new Dollar(5).equals(new Dollar(5))).toBeTruthy();
   expect(new Dollar(5).equals(new Dollar(6))).toBeFalsy();
+  expect(new Flanc(5).equals(new Flanc(5))).toBeTruthy();
+  expect(new Flanc(5).equals(new Flanc(6))).toBeFalsy();
 });
 
 test('Test Franc Multiplication', () => {

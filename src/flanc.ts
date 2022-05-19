@@ -1,12 +1,6 @@
-export class Flanc {
-  amount: number;
-  constructor(amount: number) {
-    this.amount = amount;
-  }
+import { Money } from './money';
+export class Flanc extends Money {
   times(multiplier: number): Flanc {
     return new Flanc(this.amount * multiplier);
-  }
-  equals(flanc: Flanc): boolean {
-    return this.amount === flanc.amount;
   }
 }
