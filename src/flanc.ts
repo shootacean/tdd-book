@@ -6,7 +6,7 @@ export class Flanc {
   times(multiplier: number): Flanc {
     return new Flanc(this.amount * multiplier);
   }
-  equals(dollor: Flanc): boolean {
-    return this.amount === dollor.amount;
+  equals(flanc: Flanc): boolean {
+    return this.amount === flanc.amount;
   }
 }
