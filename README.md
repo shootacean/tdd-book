@@ -1,2 +1,7 @@
 # tdd-book
-Kent Beck氏のテスト駆動開発本の写経用リポジトリ
+
+Kent Beck 氏のテスト駆動開発本の写経用リポジトリ
+
+```shell
+$ pnpm run test
+```
