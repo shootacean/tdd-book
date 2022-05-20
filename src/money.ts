@@ -1,6 +1,5 @@
 export abstract class Money {
-  protected amount: number;
-  constructor(amount: number) {
+  constructor(protected amount: number) {
     this.amount = amount;
   }
   equals(money: Money): boolean {
