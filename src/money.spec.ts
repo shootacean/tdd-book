@@ -20,3 +20,8 @@ test('Test Franc Multiplication', () => {
   expect(five.times(2)).toEqual(Money.flanc(10));
   expect(five.times(3)).toEqual(Money.flanc(15));
 });
+
+test('Test Currency', () => {
+  expect(Money.dollar(1).getCurrency()).toEqual('USD');
+  expect(Money.flanc(1).getCurrency()).toEqual('CHF');
+});
