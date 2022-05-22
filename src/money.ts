@@ -4,7 +4,6 @@ export class Money {
     this.amount = amount;
     this.currency = currency;
   }
-  // TODO リファクタリング途中なので一時的にAbstractにしている
   times(multiplier: number): Money {
     return new Money(this.amount * multiplier, this.currency);
   }
@@ -16,13 +15,10 @@ export class Money {
   }
   // NOTE Factory Method Pattern
   static dollar(amount: number): Money {
-    return new Dollar(amount, 'USD');
+    return new Money(amount, 'USD');
   }
   // NOTE Factory Method Pattern
   static flanc(amount: number): Money {
-    return new Flanc(amount, 'CHF');
+    return new Money(amount, 'CHF');
   }
 }
-
-export class Dollar extends Money {}
-export class Flanc extends Money {}
