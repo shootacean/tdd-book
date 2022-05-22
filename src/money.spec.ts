@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { Money } from './money';
+import { Flanc, Money } from './money';
 
 test('Test Multiplication', () => {
   const five: Money = Money.dollar(5);
@@ -24,4 +24,9 @@ test('Test Franc Multiplication', () => {
 test('Test Currency', () => {
   expect(Money.dollar(1).getCurrency()).toEqual('USD');
   expect(Money.flanc(1).getCurrency()).toEqual('CHF');
+});
+
+test('Test different class equality', () => {
+  const result: boolean = new Money(10, 'CHF').equals(new Flanc(10, 'CHF'));
+  expect(result).toBeTruthy();
 });

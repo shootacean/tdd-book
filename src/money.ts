@@ -1,16 +1,15 @@
-export abstract class Money {
+export class Money {
   // NOTE: Parameter propertiesでのプロパティ定義
   constructor(protected amount: number, protected currency: string) {
     this.amount = amount;
     this.currency = currency;
   }
   // TODO リファクタリング途中なので一時的にAbstractにしている
-  abstract times(multiplier: number): Money;
+  times(multiplier: number): Money {
+    return new Money(this.amount * multiplier, this.currency);
+  }
   equals(money: Money): boolean {
-    return (
-      this.constructor.name === money.constructor.name &&
-      this.amount === money.amount
-    );
+    return this.currency === money.currency && this.amount === money.amount;
   }
   getCurrency(): string {
     return this.currency;
@@ -25,15 +24,5 @@ export abstract class Money {
   }
 }
 
-export class Dollar extends Money {
-  // TODO Flancとの重複を排除したい
-  times(multiplier: number): Money {
-    return Money.dollar(this.amount * multiplier);
-  }
-}
-export class Flanc extends Money {
-  // TODO Dollarとの重複を排除したい
-  times(multiplier: number): Money {
-    return Money.flanc(this.amount * multiplier);
-  }
-}
+export class Dollar extends Money {}
+export class Flanc extends Money {}
