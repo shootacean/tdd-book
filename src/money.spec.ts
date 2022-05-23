@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { Money } from './money';
+import { Money, Expression, Bank } from './money';
 
 test('Test Multiplication', () => {
   const five: Money = Money.dollar(5);
@@ -16,4 +16,13 @@ test('Test Equality', () => {
 test('Test Currency', () => {
   expect(Money.dollar(1).getCurrency()).toEqual('USD');
   expect(Money.flanc(1).getCurrency()).toEqual('CHF');
+});
+
+test('Test Simple Addition', () => {
+  // const sum: Money = Money.dollar(5).plus(Money.dollar(5));
+  const five = Money.dollar(5);
+  const sum: Expression = five.plus(five);
+  const bank = new Bank();
+  const reduced: Money = bank.reduce(sum, 'USD');
+  expect(reduced).toEqual(Money.dollar(10));
 });
