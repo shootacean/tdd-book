@@ -34,3 +34,10 @@ export class Bank {
     return Money.dollar(10);
   }
 }
+
+export class Sum implements Expression {
+  constructor(public augend: Money, public addend: Money) {
+    this.augend = augend;
+    this.addend = addend;
+  }
+}
