@@ -8,7 +8,7 @@ export class Money implements Expression {
     return new Money(this.amount * multiplier, this.currency);
   }
   plus(addend: Money): Expression {
-    return new Money(this.amount + addend.amount, this.currency);
+    return new Sum(this, addend);
   }
   equals(money: Money): boolean {
     return this.currency === money.currency && this.amount === money.amount;
