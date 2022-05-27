@@ -1,3 +1,4 @@
+export interface Expression {}
 export class Money implements Expression {
   // NOTE: Parameter propertiesでのプロパティ定義
   constructor(protected amount: number, protected currency: string) {
@@ -26,18 +27,20 @@ export class Money implements Expression {
     return new Money(amount, 'CHF');
   }
 }
-
-export interface Expression {}
-
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    return Money.dollar(10);
+    const sum: Sum = source as Sum;
+    return sum.reduce(to);
   }
 }
 
 export class Sum implements Expression {
-  constructor(public augend: Money, public addend: Money) {
+  constructor(private augend: Money, private addend: Money) {
     this.augend = augend;
     this.addend = addend;
+  }
+  reduce(to: string): Money {
+    const amount: number = this.augend.amount + this.addend.amount;
+    return new Money(amount, to);
   }
 }

@@ -34,3 +34,10 @@ test('Test Plus Return Sum', () => {
   expect(five).toBe(sum.augend);
   expect(five).toBe(sum.addend);
 });
+
+test('Test Reduce Sum', () => {
+  const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4));
+  const bank: Bank = new Bank();
+  const result = bank.reduce(sum, 'USD');
+  expect(result).toBe(Money.dollar(7));
+});
