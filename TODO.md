@@ -8,4 +8,7 @@
 - [x] Bank の reduce を実装する
 - [ ] Sum の reduce を実装する
 - [ ] Sum クラスの amount のスコープを正しくする
+  - TypeScript での getter, setter
+  - https://qiita.com/kuropp/items/ebefeec110ea6a2beb62
+- [ ] tobe, toEqual の違いはなに？
 - [ ]

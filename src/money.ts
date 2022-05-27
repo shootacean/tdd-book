@@ -1,9 +1,12 @@
 export interface Expression {}
 export class Money implements Expression {
   // NOTE: Parameter propertiesでのプロパティ定義
-  constructor(protected amount: number, protected currency: string) {
-    this.amount = amount;
+  constructor(protected _amount: number, protected currency: string) {
+    this._amount = _amount;
     this.currency = currency;
+  }
+  get amount(): number {
+    return this._amount;
   }
   times(multiplier: number): Money {
     return new Money(this.amount * multiplier, this.currency);
