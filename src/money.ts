@@ -38,9 +38,15 @@ export class Bank {
 }
 
 export class Sum implements Expression {
-  constructor(private augend: Money, private addend: Money) {
-    this.augend = augend;
-    this.addend = addend;
+  constructor(private _augend: Money, private _addend: Money) {
+    this._augend = _augend;
+    this._addend = _addend;
+  }
+  get augend(): Money {
+    return this._augend;
+  }
+  get addend(): Money {
+    return this._addend;
   }
   reduce(to: string): Money {
     const amount: number = this.augend.amount + this.addend.amount;

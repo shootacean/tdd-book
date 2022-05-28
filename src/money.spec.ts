@@ -31,13 +31,13 @@ test('Test Plus Return Sum', () => {
   const five: Money = Money.dollar(5);
   const result: Expression = five.plus(five);
   const sum: Sum = result as Sum;
-  expect(five).toBe(sum.augend);
-  expect(five).toBe(sum.addend);
+  expect(five).toEqual(sum.augend);
+  expect(five).toEqual(sum.addend);
 });
 
 test('Test Reduce Sum', () => {
   const sum: Expression = new Sum(Money.dollar(3), Money.dollar(4));
   const bank: Bank = new Bank();
   const result = bank.reduce(sum, 'USD');
-  expect(result).toBe(Money.dollar(7));
+  expect(result).toEqual(Money.dollar(7));
 });
