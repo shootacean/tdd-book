@@ -28,11 +28,14 @@ export class Money implements Expression {
   equals(money: Money): boolean {
     return this.currency === money.currency && this.amount === money.amount;
   }
+  reduce(to: string): Money {
+    return this;
+  }
 }
 export class Bank {
   reduce(source: Expression, to: string): Money {
     if (source instanceof Money) {
-      return source as Money;
+      return (source as Money).reduce(to);
     }
     const sum: Sum = source as Sum;
     return sum.reduce(to);
