@@ -1,4 +1,6 @@
-export interface Expression {}
+export interface Expression {
+  reduce(to: string): Money;
+}
 export class Money implements Expression {
   // NOTE: Parameter propertiesでのプロパティ定義
   constructor(protected _amount: number, protected _currency: string) {
@@ -34,11 +36,7 @@ export class Money implements Expression {
 }
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    if (source instanceof Money) {
-      return (source as Money).reduce(to);
-    }
-    const sum: Sum = source as Sum;
-    return sum.reduce(to);
+    return source.reduce(to);
   }
 }
 
