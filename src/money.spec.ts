@@ -47,3 +47,10 @@ test('Test Reduce Money', () => {
   const result: Money = bank.reduce(Money.dollar(1), 'USG');
   expect(result).toEqual(Money.dollar(1));
 });
+
+test('TEst Reduce Money Different Currency', () => {
+  const bank: Bank = new Bank();
+  bank.addRate('CHF', 'USD', 2);
+  const result: Money = bank.reduce(Money.franc(2), 'USD');
+  expect(result).toEqual(Money.dollar(1));
+});

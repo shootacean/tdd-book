@@ -13,3 +13,4 @@
 - [x] tobe, toEqual の違いはなに？
 - [x] Java の Interface に該当すると思って、TypeScript の Interface を使ってるけど同等の機能なのか？
 - [x] TypeScript のクラスメソッドのスコープはデフォルト public？ → public
+- [ ] currency のとり得る値をを型定義する
