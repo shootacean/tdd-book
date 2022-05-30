@@ -1,12 +1,23 @@
 export interface Expression {}
 export class Money implements Expression {
   // NOTE: Parameter propertiesでのプロパティ定義
-  constructor(protected _amount: number, protected currency: string) {
+  constructor(protected _amount: number, protected _currency: string) {
     this._amount = _amount;
-    this.currency = currency;
+    this._currency = _currency;
   }
   get amount(): number {
     return this._amount;
+  }
+  get currency(): string {
+    return this._currency;
+  }
+  // NOTE Factory Method Pattern
+  static dollar(amount: number): Money {
+    return new Money(amount, 'USD');
+  }
+  // NOTE Factory Method Pattern
+  static flanc(amount: number): Money {
+    return new Money(amount, 'CHF');
   }
   times(multiplier: number): Money {
     return new Money(this.amount * multiplier, this.currency);
@@ -16,18 +27,6 @@ export class Money implements Expression {
   }
   equals(money: Money): boolean {
     return this.currency === money.currency && this.amount === money.amount;
-  }
-  getCurrency(): string {
-    return this.currency;
-  }
-
-  // NOTE Factory Method Pattern
-  static dollar(amount: number): Money {
-    return new Money(amount, 'USD');
-  }
-  // NOTE Factory Method Pattern
-  static flanc(amount: number): Money {
-    return new Money(amount, 'CHF');
   }
 }
 export class Bank {

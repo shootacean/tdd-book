@@ -14,8 +14,8 @@ test('Test Equality', () => {
 });
 
 test('Test Currency', () => {
-  expect(Money.dollar(1).getCurrency()).toEqual('USD');
-  expect(Money.flanc(1).getCurrency()).toEqual('CHF');
+  expect(Money.dollar(1).currency).toEqual('USD');
+  expect(Money.flanc(1).currency).toEqual('CHF');
 });
 
 test('Test Simple Addition', () => {
