@@ -48,9 +48,9 @@ test('Test Reduce Money', () => {
   expect(result).toEqual(Money.dollar(1));
 });
 
-test('TEst Reduce Money Different Currency', () => {
+test('Test Reduce Money Different Currency', () => {
   const bank: Bank = new Bank();
   bank.addRate('CHF', 'USD', 2);
-  const result: Money = bank.reduce(Money.franc(2), 'USD');
+  const result: Money = bank.reduce(Money.flanc(2), 'USD');
   expect(result).toEqual(Money.dollar(1));
 });
