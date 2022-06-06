@@ -1,5 +1,5 @@
 export interface Expression {
-  reduce(to: string): Money;
+  reduce(bank: Bank, to: string): Money;
 }
 export class Money implements Expression {
   // NOTE: Parameter propertiesでのプロパティ定義
@@ -30,14 +30,16 @@ export class Money implements Expression {
   equals(money: Money): boolean {
     return this.currency === money.currency && this.amount === money.amount;
   }
-  reduce(to: string): Money {
-    return this;
+  reduce(bank: Bank, to: string): Money {
+    const rate: number = this.currency === 'CHF' && to === 'USD' ? 2 : 1;
+    return new Money(this.amount / rate, to);
   }
 }
 export class Bank {
   reduce(source: Expression, to: string): Money {
-    return source.reduce(to);
+    return source.reduce(this, to);
   }
+  addRate(from: string, to: string, rate: int): void {}
 }
 
 export class Sum implements Expression {
@@ -51,7 +53,7 @@ export class Sum implements Expression {
   get addend(): Money {
     return this._addend;
   }
-  reduce(to: string): Money {
+  reduce(bank: Bank, to: string): Money {
     const amount: number = this.augend.amount + this.addend.amount;
     return new Money(amount, to);
   }
