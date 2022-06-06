@@ -31,7 +31,7 @@ export class Money implements Expression {
     return this.currency === money.currency && this.amount === money.amount;
   }
   reduce(bank: Bank, to: string): Money {
-    const rate: number = this.currency === 'CHF' && to === 'USD' ? 2 : 1;
+    const rate: number = bank.rate(this.currency, to);
     return new Money(this.amount / rate, to);
   }
 }
@@ -40,6 +40,9 @@ export class Bank {
     return source.reduce(this, to);
   }
   addRate(from: string, to: string, rate: int): void {}
+  rate(from: string, to: string): number {
+    return from === 'CHF' && to === 'USD' ? 2 : 1;
+  }
 }
 
 export class Sum implements Expression {
